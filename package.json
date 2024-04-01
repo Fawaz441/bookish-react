@@ -9,11 +9,20 @@
     "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
+    "axios-mock-adapter": "^1.22.0",
+    "history": "^5.3.0",
+    "lodash.clone": "^4.5.0",
+    "lodash.isempty": "^4.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "5.0.1",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
+    "reselect": "^5.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -21,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stub-server": "json-server --watch stub-server/books.json --port 8080",
+    "stub-server": "node stub-server/server --port 8080 --host 127.0.0.1",
     "e2e": "npx cypress run"
   },
   "eslintConfig": {
@@ -45,7 +54,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "cypress": "^13.7.0",
-    "json-server": "0.17.4"
+    "json-server": "0.17.4",
+    "redux-mock-store": "^1.5.4"
   },
   "jest": {
     "moduleNameMapper": {

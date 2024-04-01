@@ -39,4 +39,49 @@ describe("BookDetail", () => {
     expect(bookTitle.innerHTML).toEqual(props.book.name);
     expect(bookDescription.innerHTML).toEqual(props.book.name);
   });
+
+  it("renders reviews", () => {
+    const props = {
+      book: {
+        name: "Refactoring",
+        description:
+          "Martin Fowler’s Refactoring defined core ideas and techniques that hundreds of thousands of developers have used to improve their software.",
+        reviews: [
+          {
+            name: "Juntao",
+            date: "2018/06/21",
+            content: "Excellent work, really impressed by your efforts",
+          },
+        ],
+      },
+    };
+    const { container } = render(<BookDetail {...props} />);
+    const reviews = container.querySelectorAll(
+      '[data-testid="reviews-container"] .review'
+    );
+    expect(reviews.length).toBe(1);
+    expect(reviews[0].innerHTML).toEqual("Juntao");
+  });
+
+  it("renders review form", () => {
+    const props = {
+      book: {
+        name: "Refactoring",
+        description:
+          "Martin Fowler’s Refactoring defined core ideas and techniques that hundreds of thousands of developers have used to improve their software.",
+      },
+    };
+    const { container } = render(<BookDetail {...props} />);
+    const form = container.querySelector("form");
+    const nameInput = form.querySelector('input[name="name"]');
+    const contentTextArea = container.querySelector(
+      'textarea[name= "content"]'
+    );
+    const submitButton = container.querySelector('button[name="submit"]');
+
+    expect(form).toBeInTheDocument();
+    expect(nameInput).toBeInTheDocument();
+    expect(contentTextArea).toBeInTheDocument();
+    expect(submitButton).toBeInTheDocument();
+  });
 });

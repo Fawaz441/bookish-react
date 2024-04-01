@@ -38,13 +38,14 @@ function BookList({ books, loading, error }) {
     return <p>Loading...</p>;
   }
   if (error) {
-    return <p>Error...</p>;
+    return <p data-testid="error">Error...</p>;
   }
+
   return (
     <div data-test="book-list" className={classes.root}>
       <Grid container spacing={3}>
         {books.map((book) => (
-          <Grid item key={book.id} xs={4} sm={4}>
+          <Grid item key={book.id} xs={4} sm={4} className="book-item">
             <Card>
               <CardActionArea>
                 <CardContent>
