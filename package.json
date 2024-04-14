@@ -54,6 +54,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "cypress": "^13.7.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "json-server": "0.17.4",
     "redux-mock-store": "^1.5.4"
   },
@@ -61,5 +62,8 @@
     "moduleNameMapper": {
       "^axios$": "axios/dist/node/axios.cjs"
     }
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }

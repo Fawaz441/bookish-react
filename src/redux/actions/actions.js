@@ -39,3 +39,24 @@ export const fetchABook = (id) => {
       });
   };
 };
+
+export const saveReview = (bookId, review) => {
+  const config = {
+    headers: { "Content-Type": "application/json" },
+  };
+
+  return (dispatch) => {
+    dispatch({ type: types.SAVE_BOOK_REVIEW_PENDING });
+    try {
+      const { data } = axios.post(
+        `http://localhost:8080/books/${bookId}`,
+        JSON.stringify(review),
+        config
+      );
+      dispatch({ type: types.SAVE_BOOK_REVIEW_SUCCESS, payload: data });
+      dispatch(fetchABook(bookId));
+    } catch (e) {
+      dispatch({ type: types.SAVE_BOOK_REVIEW_FAILED, err: e.message });
+    }
+  };
+};
